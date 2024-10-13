@@ -48,6 +48,7 @@
         .navbar .menu {
             display: flex;
             gap: 30px;
+            margin-left: -300px;
         }
 
         .navbar a {
@@ -63,75 +64,100 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Menú móvil oculto por defecto */
-        .menu-mobile {
+        /* Estilos del menú desplegable */
+        .dropdown {
             display: none;
             position: absolute;
-            top: 60px;
-            right: 20px;
-            background: white;
-            color: #333;
-            width: 250px;
-            border-radius: 8px;
-            flex-direction: column;
-            align-items: stretch;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .menu-mobile a {
-            padding: 15px;
-            text-align: left;
-            color: #333;
-            transition: background 0.3s;
-        }
-
-        .menu-mobile a:hover {
             background-color: #ff4081;
-            color: white;
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 200px;
+            z-index: 1000;
+            top: 50px;
         }
 
-        /* Submenú de actividades */
-        .submenu {
+        .dropdown a {
+            padding: 10px 15px;
+            display: block;
+            white-space: nowrap;
+            color: #fff;
+        }
+
+        .menu-item:hover .dropdown {
+            display: block;
+        }
+
+        /* Icono de hamburguesa para el menú "Actividades" */
+        .hamburger {
+           display: inline-block; /* Alinea el icono de hamburguesa */
+           cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
+           margin-left: 10px; /* Espacio entre el texto y el icono */
+         }
+
+        .hamburger div {
+           width: 40px; /* Aumenta el ancho */
+           height: 5px; /* Aumenta la altura */
+           background-color: #ffd700; /* Cambia el color a dorado */
+           margin: 6px 0; /* Aumenta el margen entre las barras */
+           transition: background-color 0.3s; /* Transición para el efecto hover */
+         }
+
+        .hamburger:hover div {
+           background-color: #ffffff; /* Cambia el color al pasar el mouse */
+         }
+        /* Menú móvil */
+        .menu-toggle {
             display: none;
-            padding-left: 20px;
+            flex-direction: column;
+            cursor: pointer;
         }
 
-        .menu-mobile .submenu a {
-            padding-left: 15px;
+        /* Menú móvil */
+    .menu-mobile {
+        display: none; /* Oculto por defecto */
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: white; /* Cambiado a blanco para mayor contraste */
+        color: #333; /* Texto oscuro */
+        width: 250px; /* Aumentado el ancho para más espacio */
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: stretch; /* Alinea elementos al estirarse */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    }
+
+    .menu-mobile a {
+        padding: 15px; /* Aumentado el padding */
+        text-align: left; /* Alineado a la izquierda */
+        color: #333; /* Texto oscuro para mejor legibilidad */
+        transition: background 0.3s; /* Transición para efecto hover */
+    }
+
+    .menu-mobile a:hover {
+        background-color: #ff4081; /* Color de fondo al pasar el mouse */
+        color: white; /* Cambia el color del texto al pasar el mouse */
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+        .menu {
+            display: none; /* Oculta el menú en pantallas pequeñas */
         }
 
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            .menu {
-                display: none; /* Oculta el menú de pantalla grande */
-            }
-
-            .menu-toggle {
-                display: flex;
-                cursor: pointer;
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .menu-toggle div {
-                width: 30px;
-                height: 4px;
-                background-color: #fff;
-            }
-
-            .menu-mobile {
-                display: none;
-            }
-
-            .menu-mobile.show {
-                display: flex;
-            }
-
-            .submenu.show {
-                display: flex;
-                flex-direction: column;
-            }
+        .menu-toggle {
+            display: flex; /* Muestra el icono de menú móvil */
         }
+
+        .menu-mobile {
+            display: none; /* Mantiene oculto el menú móvil por defecto */
+        }
+
+        .hamburger {
+            display: flex; /* Muestra el icono de hamburguesa */
+        }
+
+    }
 
         /* Estilos del contenido principal */
         .main-content {
@@ -155,6 +181,48 @@
             padding: 10px 0;
             width: 100%;
         }
+
+        /* Estilos del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 90vh;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -171,6 +239,11 @@
             <a href="#" onclick="navigate('contacto.html')">Contacto</a>
             <div class="menu-item">
                 <a href="#">Actividades</a>
+                <div class="hamburger" onclick="toggleDropdown()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
                 <div class="dropdown">
                     <a href="#" onclick="navigate('galeriabasico.html')">Basico</a>
                     <a href="#" onclick="navigate('galeriaintermedio.html')">Medio</a>
@@ -182,18 +255,19 @@
             <div></div>
             <div></div>
             <div></div>
-            <span style="color: #fff;">Menú</span>
         </div>
-        <div class="menu-mobile" id="menu-mobile">
+        <div class="menu-mobile">
             <a href="#" onclick="navigate('inicio.html')">Inicio</a>
             <a href="#" onclick="navigate('servicios.html')">Servicios</a>
             <a href="#" onclick="openModal('sobre-mi.html')">Sobre Mí</a>
             <a href="#" onclick="navigate('contacto.html')">Contacto</a>
-            <a href="#" onclick="toggleSubmenu()">Actividades</a>
-            <div class="submenu" id="submenu">
-                <a href="#" onclick="navigate('galeriabasico.html')">Básico</a>
-                <a href="#" onclick="navigate('galeriaintermedio.html')">Medio</a>
-                <a href="#" onclick="navigate('galeriaavanzado.html')">Avanzado</a>
+            <div class="menu-item">
+                <a href="#">Actividades</a>
+                <div class="dropdown">
+                    <a href="#" onclick="navigate('galeriabasico.html')">Basico</a>
+                    <a href="#" onclick="navigate('galeriaintermedio.html')">Medio</a>
+                    <a href="#" onclick="navigate('galeriaavanzado.html')">Avanzado</a>
+                </div>
             </div>
         </div>
     </div>
@@ -207,6 +281,14 @@
         <!-- Añade más elementos de la galería aquí -->
     </div>
 
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <iframe id="modal-iframe" src="" alt="Contenido del Modal"></iframe>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         &copy; 2024 Proyecto. Todos los derechos reservados.
@@ -214,15 +296,10 @@
 
     <!-- JavaScript para la funcionalidad del menú -->
     <script>
-        function toggleMobileMenu() {
-            const menuMobile = document.getElementById('menu-mobile');
-            menuMobile.classList.toggle('show');
-        }
-
-        function toggleSubmenu() {
-            const submenu = document.getElementById('submenu');
-            submenu.classList.toggle('show');
-        }
+        // Carga automáticamente la página de inicio al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            navigate('inicio.html');
+        });
 
         function navigate(page) {
             const mainContent = document.getElementById('main-content');
@@ -236,21 +313,31 @@
                     .catch(error => {
                         mainContent.innerHTML = '<h1>Error al cargar la página</h1>';
                     });
-            }, 500);
+            }, 500); // Simula un pequeño retraso para la carga
         }
 
         function openModal(src) {
             const modal = document.getElementById('myModal');
             const iframe = document.getElementById('modal-iframe');
             iframe.src = src;
-            modal.style.display = 'flex';
+            modal.style.display = 'flex'; // Cambia a 'flex' para centrar el contenido
         }
 
         function closeModal() {
             const modal = document.getElementById('myModal');
             const iframe = document.getElementById('modal-iframe');
-            iframe.src = '';
-            modal.style.display = 'none';
+            iframe.src = ''; // Limpia el iframe
+            modal.style.display = 'none'; // Oculta el modal
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleMobileMenu() {
+            const menuMobile = document.querySelector('.menu-mobile');
+            menuMobile.style.display = menuMobile.style.display === 'flex' ? 'none' : 'flex';
         }
     </script>
 </body>
