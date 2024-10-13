@@ -49,7 +49,6 @@
             display: flex;
             gap: 30px;
             margin-left: -300px;
-            align-items: center; /* Alinear verticalmente */
         }
 
         .navbar a {
@@ -90,18 +89,22 @@
 
         /* Icono de hamburguesa para el menú "Actividades" */
         .hamburger {
-            display: inline-block; /* Alinea el icono de hamburguesa */
-            cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
-            margin-left: 10px; /* Espacio entre el texto y el icono */
-        }
+           display: inline-block; /* Alinea el icono de hamburguesa */
+           cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
+           margin-left: 10px; /* Espacio entre el texto y el icono */
+         }
 
         .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 4px;
-        }
+           width: 30px; /* Aumenta el ancho */
+           height: 5px; /* Aumenta la altura */
+           background-color: #ffd700; /* Cambia el color a dorado */
+           margin: 5px 0; /* Aumenta el margen entre las barras */
+           transition: background-color 0.3s; /* Transición para el efecto hover */
+         }
 
+        .hamburger:hover div {
+           background-color: #ffffff; /* Cambia el color al pasar el mouse */
+         }
         /* Menú móvil */
         .menu-toggle {
             display: none;
@@ -277,43 +280,57 @@
         </div>
     </div>
 
-    <!-- Pie de página -->
+    <!-- Footer -->
     <footer>
-        <p>© 2024 Guevara Rodríguez Grecia Mabel. Todos los derechos reservados.</p>
+        &copy; 2024 Proyecto. Todos los derechos reservados.
     </footer>
 
+    <!-- JavaScript para la funcionalidad del menú -->
     <script>
-        function toggleDropdown() {
-            const dropdown = document.querySelector('.dropdown');
-            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-        }
+        // Carga automáticamente la página de inicio al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            navigate('inicio.html');
+        });
 
         function navigate(page) {
-            window.location.href = page;
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = '<h1>Cargando...</h1>';
+            setTimeout(() => {
+                fetch(page)
+                    .then(response => response.text())
+                    .then(data => {
+                        mainContent.innerHTML = data;
+                    })
+                    .catch(error => {
+                        mainContent.innerHTML = '<h1>Error al cargar la página</h1>';
+                    });
+            }, 500); // Simula un pequeño retraso para la carga
         }
 
-        function openModal(page) {
-            const modal = document.getElementById("myModal");
-            const iframe = document.getElementById("modal-iframe");
-            iframe.src = page;
-            modal.style.display = "flex";
+        function openModal(src) {
+            const modal = document.getElementById('myModal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = src;
+            modal.style.display = 'flex'; // Cambia a 'flex' para centrar el contenido
         }
 
         function closeModal() {
-            const modal = document.getElementById("myModal");
-            const iframe = document.getElementById("modal-iframe");
-            iframe.src = ""; // Limpiar el contenido del iframe
-            modal.style.display = "none";
+            const modal = document.getElementById('myModal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = ''; // Limpia el iframe
+            modal.style.display = 'none'; // Oculta el modal
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
 
         function toggleMobileMenu() {
             const menuMobile = document.querySelector('.menu-mobile');
-            menuMobile.style.display = (menuMobile.style.display === 'flex') ? 'none' : 'flex';
+            menuMobile.style.display = menuMobile.style.display === 'flex' ? 'none' : 'flex';
         }
     </script>
 </body>
 </html>
-
-
-
-
+ 
