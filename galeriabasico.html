@@ -130,47 +130,32 @@
                 <img src="temporizador.png" alt="Actividad 7"> <!-- Imagen de la actividad 7 -->
                 <h2>Actividad 7: Temporizador</h2> <!-- Título de la actividad 7 -->
             </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-8-CUADRO-DE-DIALOGO/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="dialogo.png" alt="Actividad 8"> <!-- Imagen de la actividad 8 -->
+                <h2>Actividad 8: Cuadro de diálogo</h2> <!-- Título de la actividad 8 -->
+            </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal"> <!-- Contenedor del modal -->
+    <!-- Modal para mostrar contenido -->
+    <div class="modal" id="modal"> <!-- Contenedor del modal -->
         <span class="close" onclick="closeModal()">&times;</span> <!-- Botón para cerrar el modal -->
-        <div class="modal-content"> <!-- Contenedor del contenido del modal -->
-            <iframe id="modal-iframe" src="" alt="Contenido del Modal"></iframe> <!-- iframe para mostrar contenido dentro del modal -->
+        <div class="modal-content"> <!-- Contenedor para el contenido del modal -->
+            <iframe id="modal-iframe" src="" allowfullscreen></iframe> <!-- Iframe donde se mostrará el contenido -->
         </div>
     </div>
 
     <script>
-        // Función para abrir el modal
-        function openModal(contentSrc) {
-            const modal = document.getElementById("myModal"); // Obtiene el modal por su ID
-            const modalIframe = document.getElementById("modal-iframe"); // Obtiene el iframe dentro del modal
-            modalIframe.src = contentSrc; // Establece la fuente del iframe en el modal
-            modal.style.display = "flex"; // Muestra el modal
+        // Función para abrir el modal y cargar el contenido en el iframe
+        function openModal(url) {
+            document.getElementById('modal').style.display = 'flex'; // Muestra el modal
+            document.getElementById('modal-iframe').src = url; // Carga la URL en el iframe
         }
 
         // Función para cerrar el modal
         function closeModal() {
-            const modal = document.getElementById("myModal"); // Obtiene el modal por su ID
-            const modalIframe = document.getElementById("modal-iframe"); // Obtiene el iframe dentro del modal
-            modalIframe.src = ""; // Limpia la fuente del iframe al cerrar
-            modal.style.display = "none"; // Oculta el modal
-        }
-
-        // Cierra el modal si se presiona la tecla Escape
-        window.onkeydown = function(event) {
-            if (event.key === "Escape") { // Verifica si la tecla presionada es "Escape"
-                closeModal(); // Cierra el modal
-            }
-        }
-
-        // Cierra el modal si se hace clic fuera de la imagen
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal"); // Obtiene el modal por su ID
-            if (event.target === modal) { // Verifica si el clic fue en el área del modal
-                closeModal(); // Cierra el modal
-            }
+            document.getElementById('modal').style.display = 'none'; // Oculta el modal
+            document.getElementById('modal-iframe').src = ''; // Limpia el contenido del iframe
         }
     </script>
 </body>
