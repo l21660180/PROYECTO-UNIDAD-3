@@ -49,6 +49,7 @@
             display: flex;
             gap: 30px;
             margin-left: -300px;
+            align-items: center; /* Alinear verticalmente */
         }
 
         .navbar a {
@@ -91,7 +92,7 @@
         .hamburger {
             display: inline-block; /* Alinea el icono de hamburguesa */
             cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
-            margin-left: 10px;
+            margin-left: 10px; /* Espacio entre el texto y el icono */
         }
 
         .hamburger div {
@@ -276,55 +277,38 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer>
-        &copy; 2024 Proyecto. Todos los derechos reservados.
+        <p>© 2024 Guevara Rodríguez Grecia Mabel. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para la funcionalidad del menú -->
     <script>
-        // Carga automáticamente la página de inicio al cargar la página
-        document.addEventListener('DOMContentLoaded', () => {
-            navigate('inicio.html');
-        });
-
-        function navigate(page) {
-            const mainContent = document.getElementById('main-content');
-            mainContent.innerHTML = '<h1>Cargando...</h1>';
-            setTimeout(() => {
-                fetch(page)
-                    .then(response => response.text())
-                    .then(data => {
-                        mainContent.innerHTML = data;
-                    })
-                    .catch(error => {
-                        mainContent.innerHTML = '<h1>Error al cargar la página</h1>';
-                    });
-            }, 500); // Simula un pequeño retraso para la carga
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
         }
 
-        function openModal(src) {
-            const modal = document.getElementById('myModal');
-            const iframe = document.getElementById('modal-iframe');
-            iframe.src = src;
-            modal.style.display = 'flex'; // Cambia a 'flex' para centrar el contenido
+        function navigate(page) {
+            window.location.href = page;
+        }
+
+        function openModal(page) {
+            const modal = document.getElementById("myModal");
+            const iframe = document.getElementById("modal-iframe");
+            iframe.src = page;
+            modal.style.display = "flex";
         }
 
         function closeModal() {
-            const modal = document.getElementById('myModal');
-            const iframe = document.getElementById('modal-iframe');
-            iframe.src = ''; // Limpia el iframe
-            modal.style.display = 'none'; // Oculta el modal
-        }
-
-        function toggleDropdown() {
-            const dropdown = document.querySelector('.dropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            const modal = document.getElementById("myModal");
+            const iframe = document.getElementById("modal-iframe");
+            iframe.src = ""; // Limpiar el contenido del iframe
+            modal.style.display = "none";
         }
 
         function toggleMobileMenu() {
             const menuMobile = document.querySelector('.menu-mobile');
-            menuMobile.style.display = menuMobile.style.display === 'flex' ? 'none' : 'flex';
+            menuMobile.style.display = (menuMobile.style.display === 'flex') ? 'none' : 'flex';
         }
     </script>
 </body>
