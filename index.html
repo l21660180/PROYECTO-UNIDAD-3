@@ -1,218 +1,223 @@
 <!DOCTYPE html>
+<!-- Declara que este documento es un documento HTML5. -->
 <html lang="es">
+<!-- Inicia la etiqueta HTML y establece el idioma del documento en español. -->
 <head>
     <meta charset="UTF-8">
+    <!-- Establece la codificación de caracteres en UTF-8, que soporta caracteres especiales. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura la vista para dispositivos móviles, asegurando que el ancho se ajuste al tamaño de la pantalla. -->
     <title>Menu - Proyecto</title>
+    <!-- Título que aparecerá en la pestaña del navegador. -->
     <style>
         /* Estilos generales */
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: 'Arial', sans-serif; /* Define la fuente principal. */
+            margin: 0; /* Elimina el margen por defecto del navegador. */
+            padding: 0; /* Elimina el padding por defecto del navegador. */
+            background-color: #f9f9f9; /* Establece un color de fondo claro. */
+            color: #333; /* Establece el color del texto. */
+            display: flex; /* Usa flexbox para organizar el contenido. */
+            flex-direction: column; /* Organiza los elementos en una columna. */
+            min-height: 100vh; /* Asegura que el cuerpo ocupa al menos la altura total de la ventana. */
         }
 
         /* Estilos de la barra de navegación (Navbar) */
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(to right, #ff4081, #7b1fa2);
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 1000;
+            position: fixed; /* Fija la barra de navegación en la parte superior de la ventana. */
+            top: 0; /* Posiciona la barra en la parte superior. */
+            width: 100%; /* Hace que la barra ocupe todo el ancho de la ventana. */
+            background: linear-gradient(to right, #ff4081, #7b1fa2); /* Establece un fondo degradado para la barra. */
+            color: #fff; /* Establece el color del texto en blanco. */
+            display: flex; /* Usa flexbox para organizar los elementos dentro de la barra. */
+            justify-content: space-between; /* Distribuye el espacio entre los elementos. */
+            align-items: center; /* Centra verticalmente los elementos. */
+            padding: 10px 20px; /* Espaciado interno de la barra. */
+            z-index: 1000; /* Asegura que la barra se superponga a otros elementos. */
         }
 
         .navbar .logo {
-            display: flex;
-            align-items: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
+            display: flex; /* Usa flexbox para organizar el logo. */
+            align-items: center; /* Centra verticalmente el contenido del logo. */
+            font-size: 24px; /* Establece el tamaño de la fuente para el logo. */
+            font-weight: bold; /* Hace el texto del logo en negrita. */
+            color: #fff; /* Establece el color del texto del logo en blanco. */
         }
 
         .navbar .logo img {
-            width: 40px;
-            height: auto;
-            margin-right: 10px;
+            width: 40px; /* Establece el ancho de la imagen del logo. */
+            height: auto; /* Permite que la altura se ajuste automáticamente. */
+            margin-right: 10px; /* Agrega espacio entre la imagen y el texto del logo. */
         }
 
         .navbar .menu {
-            display: flex;
-            gap: 30px;
+            display: flex; /* Usa flexbox para organizar el menú. */
+            gap: 30px; /* Espacio entre los elementos del menú. */
         }
 
         .navbar a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            padding: 8px 20px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            text-decoration: none; /* Elimina el subrayado de los enlaces. */
+            color: #fff; /* Establece el color del texto de los enlaces en blanco. */
+            font-size: 18px; /* Establece el tamaño de la fuente de los enlaces. */
+            padding: 8px 20px; /* Espaciado interno de los enlaces. */
+            border-radius: 4px; /* Redondea las esquinas de los enlaces. */
+            transition: background-color 0.3s; /* Suaviza el cambio de color de fondo al pasar el mouse. */
         }
 
         .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2); /* Cambia el color de fondo al pasar el mouse. */
         }
 
         /* Estilos del menú desplegable */
         .dropdown {
-            display: none;
-            position: absolute;
-            background-color: #ff4081;
-            border-radius: 8px;
-            padding: 10px 0;
-            min-width: 200px;
-            z-index: 1000;
-            top: 50px;
+            display: none; /* Oculta el menú desplegable por defecto. */
+            position: absolute; /* Posiciona el menú desplegable de forma absoluta. */
+            background-color: #ff4081; /* Establece el color de fondo del menú desplegable. */
+            border-radius: 8px; /* Redondea las esquinas del menú desplegable. */
+            padding: 10px 0; /* Agrega espaciado interno al menú desplegable. */
+            min-width: 200px; /* Establece un ancho mínimo para el menú desplegable. */
+            z-index: 1000; /* Asegura que el menú desplegable se superponga a otros elementos. */
+            top: 50px; /* Posiciona el menú debajo de la barra de navegación. */
         }
 
         .dropdown a {
-            padding: 10px 15px;
-            display: block;
-            white-space: nowrap;
-            color: #fff;
+            padding: 10px 15px; /* Espaciado interno de los enlaces del menú desplegable. */
+            display: block; /* Hace que los enlaces del menú ocupen todo el ancho disponible. */
+            white-space: nowrap; /* Evita que el texto se divida en varias líneas. */
+            color: #fff; /* Establece el color del texto de los enlaces del menú desplegable en blanco. */
         }
 
         .menu-item:hover .dropdown {
-            display: block;
+            display: block; /* Muestra el menú desplegable al pasar el mouse sobre el elemento del menú. */
         }
 
         /* Icono de hamburguesa para el menú "Actividades" */
         .hamburger {
-            display: inline-block; /* Alinea el icono de hamburguesa */
-            cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
-            margin-left: 10px; /* Espacio entre el texto y el icono */
+            display: inline-block; /* Alinea el icono de hamburguesa. */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el icono. */
+            margin-left: 10px; /* Espacio entre el texto y el icono. */
         }
 
         .hamburger div {
-            width: 40px; /* Aumenta el ancho */
-            height: 5px; /* Aumenta la altura */
-            background-color: #ffd700; /* Cambia el color a dorado */
-            margin: 6px 0; /* Aumenta el margen entre las barras */
-            transition: background-color 0.3s; /* Transición para el efecto hover */
+            width: 40px; /* Establece el ancho de las barras del icono de hamburguesa. */
+            height: 5px; /* Establece la altura de las barras del icono de hamburguesa. */
+            background-color: #ffd700; /* Establece el color dorado para las barras. */
+            margin: 6px 0; /* Agrega espacio entre las barras. */
+            transition: background-color 0.3s; /* Suaviza el cambio de color al pasar el mouse. */
         }
 
         .hamburger:hover div {
-            background-color: #ffffff; /* Cambia el color al pasar el mouse */
+            background-color: #ffffff; /* Cambia el color de las barras al pasar el mouse. */
         }
 
         /* Menú móvil */
         .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+            display: none; /* Oculto por defecto en pantallas grandes. */
+            flex-direction: column; /* Organiza el contenido del menú en una columna. */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el icono. */
         }
 
         .menu-mobile {
-            display: none; /* Oculto por defecto */
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background: linear-gradient(to right, #ff4081, #7b1fa2);
-            width: 200px;
-            border-radius: 8px;
-            flex-direction: column;
-            align-items: center;
+            display: none; /* Oculto por defecto. */
+            position: absolute; /* Posiciona el menú móvil de forma absoluta. */
+            top: 60px; /* Posiciona el menú móvil debajo de la barra de navegación. */
+            right: 20px; /* Posiciona el menú móvil desde la derecha. */
+            background: linear-gradient(to right, #ff4081, #7b1fa2); /* Establece un fondo degradado para el menú móvil. */
+            width: 200px; /* Establece un ancho fijo para el menú móvil. */
+            border-radius: 8px; /* Redondea las esquinas del menú móvil. */
+            flex-direction: column; /* Organiza el contenido del menú móvil en una columna. */
+            align-items: center; /* Centra los elementos dentro del menú móvil. */
         }
 
         .menu-mobile a {
-            padding: 10px;
-            width: 100%;
-            text-align: center;
-            color: #fff;
+            padding: 10px; /* Espaciado interno de los enlaces del menú móvil. */
+            width: 100%; /* Hace que los enlaces del menú móvil ocupen todo el ancho disponible. */
+            text-align: center; /* Centra el texto de los enlaces del menú móvil. */
+            color: #fff; /* Establece el color del texto de los enlaces del menú móvil en blanco. */
         }
 
         /* Estilos responsivos */
         @media (max-width: 768px) {
             .menu {
-                display: none; /* Oculta el menú en pantallas pequeñas */
+                display: none; /* Oculta el menú en pantallas pequeñas. */
             }
 
             .menu-toggle {
-                display: flex; /* Muestra el icono de menú móvil */
+                display: flex; /* Muestra el icono de menú móvil. */
             }
 
             .menu-mobile {
-                display: flex; /* Muestra el menú móvil */
+                display: flex; /* Muestra el menú móvil. */
             }
 
             .hamburger {
-                display: flex; /* Muestra el icono de hamburguesa */
+                display: flex; /* Muestra el icono de hamburguesa. */
             }
         }
 
         /* Estilos del contenido principal */
         .main-content {
-            margin-top: 80px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            flex-grow: 1;
+            margin-top: 80px; /* Agrega margen superior para evitar que el contenido se superponga a la barra de navegación. */
+            padding: 20px; /* Espaciado interno del contenido principal. */
+            background-color: white; /* Establece un fondo blanco para el contenido principal. */
+            border-radius: 8px; /* Redondea las esquinas del contenido principal. */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra sutil al contenido principal. */
+            flex-grow: 1; /* Permite que el contenido principal crezca para llenar el espacio disponible. */
         }
 
         h1 {
-            color: #7b1fa2;
+            color: #7b1fa2; /* Establece el color del encabezado h1. */
         }
 
         /* Estilos del footer */
         footer {
-            background: linear-gradient(to right, #ff4081, #7b1fa2);
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            width: 100%;
+            background: linear-gradient(to right, #ff4081, #7b1fa2); /* Establece un fondo degradado para el pie de página. */
+            color: #fff; /* Establece el color del texto en blanco. */
+            text-align: center; /* Centra el texto del pie de página. */
+            padding: 10px 0; /* Agrega espaciado interno al pie de página. */
+            width: 100%; /* Asegura que el pie de página ocupe todo el ancho de la ventana. */
         }
 
         /* Estilos del modal */
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
+            display: none; /* Oculta el modal por defecto. */
+            position: fixed; /* Fija el modal en la ventana. */
+            z-index: 1000; /* Asegura que el modal se superponga a otros elementos. */
+            left: 0; /* Posiciona el modal a la izquierda de la ventana. */
+            top: 0; /* Posiciona el modal en la parte superior de la ventana. */
+            width: 100%; /* Hace que el modal ocupe todo el ancho de la ventana. */
+            height: 100%; /* Hace que el modal ocupe toda la altura de la ventana. */
+            background-color: rgba(0, 0, 0, 0.8); /* Establece un fondo oscuro semi-transparente para el modal. */
+            justify-content: center; /* Centra el contenido del modal horizontalmente. */
+            align-items: center; /* Centra el contenido del modal verticalmente. */
         }
 
         .modal-content {
-            position: relative;
-            max-width: 80%;
-            max-height: 80%;
+            position: relative; /* Posiciona el contenido del modal relativo a sí mismo. */
+            max-width: 80%; /* Establece un ancho máximo para el contenido del modal. */
+            max-height: 80%; /* Establece una altura máxima para el contenido del modal. */
         }
 
         .modal-content iframe {
-            width: 100%;
-            height: 90vh;
-            border: none;
-            border-radius: 8px;
+            width: 100%; /* Hace que el iframe ocupe todo el ancho disponible. */
+            height: 90vh; /* Establece una altura del iframe al 90% de la ventana. */
+            border: none; /* Elimina el borde del iframe. */
+            border-radius: 8px; /* Redondea las esquinas del iframe. */
         }
 
         .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
+            position: absolute; /* Posiciona el botón de cerrar de forma absoluta. */
+            top: 10px; /* Posiciona el botón de cerrar desde la parte superior. */
+            right: 20px; /* Posiciona el botón de cerrar desde la derecha. */
+            font-size: 24px; /* Establece el tamaño de la fuente para el botón de cerrar. */
+            color: white; /* Establece el color del texto del botón de cerrar en blanco. */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón de cerrar. */
         }
 
         .gallery-item {
-            cursor: pointer;
-            margin-bottom: 20px;
-            text-align: center;
+            cursor: pointer; /* Cambia el cursor al pasar sobre el elemento de la galería. */
+            margin-bottom: 20px; /* Agrega margen inferior entre los elementos de la galería. */
+            text-align: center; /* Centra el texto de los elementos de la galería. */
         }
     </style>
 </head>
@@ -220,34 +225,36 @@
     <!-- Barra de navegación -->
     <div class="navbar">
         <div class="logo">
-            <img src="fantasma.png" alt="Logo">
-            ACTIVIDADES DE LA UNIDAD 3
+            <img src="fantasma.png" alt="Logo"> <!-- Logo que se muestra en la barra de navegación. -->
+            ACTIVIDADES DE LA UNIDAD 3 <!-- Título del logo que se muestra junto a la imagen. -->
         </div>
         <div class="menu">
-            <a href="#" onclick="navigate('inicio.html')">Inicio</a>
-            <a href="#" onclick="navigate('servicios.html')">Servicios</a>
-            <a href="#" onclick="openModal('sobre-mi.html')">Sobre Mí</a>
-            <a href="#" onclick="navigate('contacto.html')">Contacto</a>
+            <a href="#" onclick="navigate('inicio.html')">Inicio</a> <!-- Enlace a la página de inicio. -->
+            <a href="#" onclick="navigate('servicios.html')">Servicios</a> <!-- Enlace a la página de servicios. -->
+            <a href="#" onclick="openModal('sobre-mi.html')">Sobre Mí</a> <!-- Enlace que abre un modal con información sobre mí. -->
+            <a href="#" onclick="navigate('contacto.html')">Contacto</a> <!-- Enlace a la página de contacto. -->
             <div class="menu-item">
-                <a href="#">Actividades</a>
+                <a href="#">Actividades</a> <!-- Título del menú de actividades. -->
                 <div class="hamburger" onclick="toggleDropdown()">
+                    <!-- Icono de hamburguesa que muestra el menú desplegable de actividades. -->
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
                 <div class="dropdown">
-                    <a href="#" onclick="navigate('galeriabasico.html')">Basico</a>
-                    <a href="#" onclick="navigate('galeriaintermedio.html')">Intermedio</a>
-                    <a href="#" onclick="navigate('galeriaavanzado.html')">Avanzado</a>
+                    <a href="#" onclick="navigate('galeriabasico.html')">Basico</a> <!-- Enlace a la galería básica. -->
+                    <a href="#" onclick="navigate('galeriaintermedio.html')">Intermedio</a> <!-- Enlace a la galería intermedia. -->
+                    <a href="#" onclick="navigate('galeriaavanzado.html')">Avanzado</a> <!-- Enlace a la galería avanzada. -->
                 </div>
             </div>
         </div>
         <div class="menu-toggle" onclick="toggleMobileMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div></div> <!-- Parte superior del icono de menú móvil. -->
+            <div></div> <!-- Parte media del icono de menú móvil. -->
+            <div></div> <!-- Parte inferior del icono de menú móvil. -->
         </div>
         <div class="menu-mobile">
+            <!-- Menú desplegable para dispositivos móviles. -->
             <a href="#" onclick="navigate('inicio.html')">Inicio</a>
             <a href="#" onclick="navigate('servicios.html')">Servicios</a>
             <a href="#" onclick="openModal('sobre-mi.html')">Sobre Mí</a>
@@ -266,92 +273,70 @@
     <!-- Área de contenido principal -->
     <div class="main-content" id="main-content">
         <div class="gallery-item" onclick="openModal('ActividadesP/Actividad1Mensaje.html')">
-            <img src="mensaje.png" alt="Actividad 1" style="width: 200px; height: auto;">
-            <h2>Actividad 1: Mensaje</h2>
+            <img src="mensaje.png" alt="Actividad 1" style="width: 200px; height: auto;"> <!-- Imagen de la actividad. -->
+            <h2>Actividad 1: Mensaje</h2> <!-- Título de la actividad. -->
         </div>
         <!-- Añade más elementos de la galería aquí -->
     </div>
 
     <!-- Modal -->
     <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span> <!-- Botón para cerrar el modal. -->
         <div class="modal-content">
-            <iframe id="modal-iframe" src="" alt="Contenido del Modal"></iframe>
+            <iframe id="modal-iframe" src="" alt="Contenido del Modal"></iframe> <!-- Iframe donde se carga el contenido del modal. -->
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        &copy; 2024 Proyecto. Todos los derechos reservados.
+        &copy; 2024 Proyecto. Todos los derechos reservados. <!-- Información del pie de página. -->
     </footer>
 
     <!-- JavaScript para la funcionalidad del menú -->
     <script>
         // Carga automáticamente la página de inicio al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
-            navigate('inicio.html');
+            navigate('inicio.html'); // Llama a la función navigate para cargar la página de inicio al cargar el documento.
         });
 
         function navigate(page) {
             const mainContent = document.getElementById('main-content');
-            mainContent.innerHTML = '<h1>Cargando...</h1>';
+            mainContent.innerHTML = '<h1>Cargando...</h1>'; // Muestra un mensaje de carga en el área de contenido principal.
             setTimeout(() => {
-                fetch(page)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Error al cargar la página');
-                        }
-                        return response.text();
-                    })
+                fetch(page) // Hace una solicitud para obtener la página especificada.
+                    .then(response => response.text())
                     .then(data => {
-                        mainContent.innerHTML = data;
+                        mainContent.innerHTML = data; // Carga el contenido de la página solicitada en el área principal.
                     })
                     .catch(error => {
-                        mainContent.innerHTML = '<h1>Error al cargar la página</h1>';
+                        mainContent.innerHTML = '<h1>Error al cargar la página</h1>'; // Muestra un mensaje de error si la carga falla.
                     });
-            }, 500); // Simula un pequeño retraso para la carga
+            }, 500); // Simula un pequeño retraso para la carga.
         }
 
         function openModal(src) {
             const modal = document.getElementById('myModal');
             const iframe = document.getElementById('modal-iframe');
-            iframe.src = src;
-            modal.style.display = 'flex'; // Cambia a 'flex' para centrar el contenido
+            iframe.src = src; // Establece la fuente del iframe para cargar el contenido del modal.
+            modal.style.display = 'flex'; // Cambia el estilo del modal para mostrarlo como un contenedor flexible centrado.
         }
 
         function closeModal() {
             const modal = document.getElementById('myModal');
             const iframe = document.getElementById('modal-iframe');
-            iframe.src = ''; // Limpia el iframe
-            modal.style.display = 'none'; // Oculta el modal
+            iframe.src = ''; // Limpia la fuente del iframe para que no mantenga el contenido anterior.
+            modal.style.display = 'none'; // Oculta el modal.
         }
 
         function toggleDropdown() {
             const dropdown = document.querySelector('.dropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Alterna la visibilidad del menú desplegable.
         }
 
         function toggleMobileMenu() {
             const menuMobile = document.querySelector('.menu-mobile');
-            menuMobile.style.display = menuMobile.style.display === 'flex' ? 'none' : 'flex';
+            menuMobile.style.display = menuMobile.style.display === 'flex' ? 'none' : 'flex'; // Alterna la visibilidad del menú móvil.
         }
-
-        // Cierra el modal cuando se presiona la tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Cierra el modal cuando se hace clic fuera del contenido del modal
-        window.onclick = function(event) {
-            const modal = document.getElementById('myModal');
-            const modalContent = document.querySelector('.modal-content');
-            if (event.target === modal || !modalContent.contains(event.target)) {
-                closeModal();
-            }
-        };
     </script>
 </body>
 </html>
-
