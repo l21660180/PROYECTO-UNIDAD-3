@@ -156,6 +156,13 @@
         .hamburger {
             display: flex; /* Muestra el icono de hamburguesa */
         }
+
+         /* Oculta los enlaces "Servicios", "Sobre Mí" y "Contacto" en pantallas pequeñas */
+        .menu a:nth-child(2), /* Servicios */
+        .menu a:nth-child(3), /* Sobre Mí */
+        .menu a:nth-child(4) /* Contacto */ {
+            display: none;
+        }
     }
 
         /* Estilos del contenido principal */
@@ -245,7 +252,7 @@
                 </div>
                 <div class="dropdown">
                     <a href="#" onclick="navigate('galeriabasico.html')">Basico</a>
-                    <a href="#" onclick="navigate('galeriaintermedio.html')">Intermedio</a>
+                    <a href="#" onclick="navigate('galeriaintermedio.html')">Medio</a>
                     <a href="#" onclick="navigate('galeriaavanzado.html')">Avanzado</a>
                 </div>
             </div>
@@ -264,7 +271,7 @@
                 <a href="#">Actividades</a>
                 <div class="dropdown">
                     <a href="#" onclick="navigate('galeriabasico.html')">Basico</a>
-                    <a href="#" onclick="navigate('galeriaintermedio.html')">Intermedio</a>
+                    <a href="#" onclick="navigate('galeriaintermedio.html')">Medio</a>
                     <a href="#" onclick="navigate('galeriaavanzado.html')">Avanzado</a>
                 </div>
             </div>
