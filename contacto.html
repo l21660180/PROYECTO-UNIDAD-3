@@ -1,0 +1,126 @@
+<!DOCTYPE html> <!-- Este es un tipo de documento HTML. Le dice al navegador que este archivo es HTML5 -->
+<html lang="es"> <!-- Aquí se establece que el idioma del contenido es español -->
+<head>
+    <meta charset="UTF-8"> <!-- Esto asegura que se pueden mostrar correctamente todos los caracteres especiales (como acentos) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Esto hace que la página se vea bien en dispositivos móviles -->
+    <title>Contacto - Proyecto</title> <!-- Título que aparecerá en la pestaña del navegador -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Esto enlaza una biblioteca de iconos para poder usar íconos como el de Instagram -->
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; /* Establece la fuente principal del texto en Arial */
+            margin: 0; /* Elimina el espacio alrededor de la página */
+            padding: 0; /* Elimina el espacio dentro de la página */
+            background-color: #f5f5dc; /* Establece el color de fondo a un tono crema */
+            color: #333; /* Establece el color del texto a un gris oscuro */
+            min-height: 100vh; /* Asegura que la altura mínima del cuerpo sea igual a la altura de la ventana */
+            display: flex; /* Usa un diseño flexible para alinear elementos fácilmente */
+            justify-content: center; /* Centra el contenido en la parte horizontal de la página */
+            align-items: center; /* Centra el contenido en la parte vertical de la página */
+        }
+
+        .main-content { 
+            background-color: white; /* Establece el fondo del área principal a blanco */
+            border-radius: 10px; /* Hace que las esquinas del área principal sean redondeadas */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil alrededor del área principal */
+            padding: 40px; /* Agrega espacio dentro del área principal alrededor del contenido */
+            max-width: 900px; /* Establece un ancho máximo para el área principal */
+            display: flex; /* Usa un diseño flexible dentro del área principal */
+            flex-direction: row; /* Coloca los elementos uno al lado del otro (horizontalmente) */
+            gap: 20px; /* Añade espacio entre los elementos */
+            align-items: flex-start; /* Alinea los elementos en la parte superior del área principal */
+        }
+
+        .left-content { 
+            flex: 1; /* Permite que esta sección ocupe el espacio disponible */
+            display: flex; /* Usa un diseño flexible dentro de esta sección */
+            flex-direction: column; /* Coloca los elementos uno encima del otro (verticalmente) */
+            gap: 20px; /* Añade espacio entre los elementos de esta sección */
+        }
+
+        h1 { 
+            color: #7b1fa2; /* Cambia el color del título principal a un tono morado */
+            margin-bottom: 20px; /* Añade espacio debajo del título */
+        }
+
+        p { 
+            margin: 10px 0; /* Añade espacio arriba y abajo de cada párrafo */
+            font-size: 1.1rem; /* Establece un tamaño de fuente un poco más grande para los párrafos */
+        }
+
+        .btn-instagram { 
+            display: inline-flex; /* Hace que el botón se muestre en línea y permite usar flexbox dentro de él */
+            align-items: center; /* Alinea verticalmente el ícono dentro del botón */
+            margin-top: 20px; /* Añade espacio arriba del botón */
+            color: #ff4081; /* Establece el color del texto del botón a un rosa fuerte */
+            font-size: 1.5rem; /* Aumenta el tamaño del ícono dentro del botón */
+            text-decoration: none; /* Elimina el subrayado del texto del botón */
+            transition: color 0.3s; /* Agrega un efecto suave cuando cambia el color del texto */
+        }
+
+        .btn-instagram:hover { 
+            color: #e91e63; /* Cambia el color del texto al pasar el mouse sobre el botón */
+        }
+
+        /* Estilos para el formulario */
+        form { 
+            margin-top: 20px; /* Añade espacio encima del formulario */
+            display: flex; /* Usa un diseño flexible para organizar los campos del formulario */
+            flex-direction: column; /* Coloca los campos uno encima del otro (verticalmente) */
+            width: 100%; /* Hace que el formulario ocupe todo el ancho disponible */
+        }
+
+        input, textarea { 
+            margin-bottom: 15px; /* Añade espacio debajo de cada campo de entrada */
+            padding: 10px; /* Añade espacio interno a los campos */
+            border: 1px solid #ccc; /* Establece un borde gris claro para los campos */
+            border-radius: 5px; /* Redondea las esquinas de los campos */
+            font-size: 1rem; /* Establece un tamaño de fuente estándar para los campos */
+        }
+
+        button { 
+            padding: 10px; /* Añade espacio interno al botón */
+            background-color: #7b1fa2; /* Establece el color de fondo del botón a un tono morado */
+            color: white; /* Establece el color del texto del botón a blanco */
+            border: none; /* Elimina el borde del botón */
+            border-radius: 5px; /* Redondea las esquinas del botón */
+            font-size: 1rem; /* Establece un tamaño de fuente estándar para el botón */
+            cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre el botón */
+            transition: background-color 0.3s; /* Agrega un efecto suave cuando cambia el color de fondo del botón */
+        }
+
+        button:hover { 
+            background-color: #6a1b9a; /* Cambia el color de fondo del botón al pasar el mouse sobre él */
+        }
+
+        /* Estilo para la imagen */
+        .contact-image { 
+            width: 250px; /* Establece un ancho fijo para la imagen */
+            border-radius: 10px; /* Redondea las esquinas de la imagen */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content"> <!-- Este es el contenedor principal donde se muestra todo el contenido -->
+        <div class="left-content"> <!-- Contenedor para la información de contacto -->
+            <h1>Contacto</h1> <!-- Título de la sección de contacto -->
+            <p>Dirección de correo electrónico: greciaguevara200704@gmail.com</p> <!-- Muestra el correo electrónico para contacto -->
+            <p>Número de teléfono: 488 174 68 40</p> <!-- Muestra el número de teléfono para contacto -->
+            <p>Sígueme en Instagram:</p> <!-- Texto que invita a seguir en Instagram -->
+            <a href="https://www.instagram.com/greciaamabel" class="btn-instagram" target="_blank"> <!-- Enlace a mi perfil de Instagram -->
+                <i class="fab fa-instagram"></i> Instagram <!-- Muestra un ícono de Instagram junto al texto -->
+            </a>
+
+            <!-- Aquí comienza el formulario de contacto -->
+            <form> <!-- Abre el formulario donde los usuarios pueden enviar información -->
+                <input type="text" placeholder="Tu nombre" required> <!-- Campo para que el usuario escriba su nombre -->
+                <input type="email" placeholder="Tu correo electrónico" required> <!-- Campo para que el usuario escriba su correo electrónico -->
+                <textarea rows="4" placeholder="Tu mensaje" required></textarea> <!-- Área para que el usuario escriba su mensaje -->
+                <button type="submit">Enviar</button> <!-- Botón que envía el formulario -->
+            </form> <!-- Cierra el formulario -->
+        </div>
+
+        <!-- Aquí se muestra una imagen relacionada con el contacto -->
+        <img src="contacto.png" alt="Contacto" class="contact-image"> <!-- Imagen que se muestra al lado del formulario -->
+    </div>
+</body>
+</html>

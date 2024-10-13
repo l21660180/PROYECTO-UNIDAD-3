@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Declara que el idioma del documento es español -->
+<head>
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista para dispositivos móviles -->
+    <title>Sobre Mí - Proyecto</title> <!-- Título de la página -->
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif; /* Establece la fuente general del documento */
+            margin: 0; /* Elimina el margen por defecto del navegador */
+            padding: 0; /* Elimina el padding por defecto del navegador */
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Fondo degradado */
+            color: #333; /* Color del texto */
+            min-height: 100vh; /* Asegura que el cuerpo tenga al menos la altura completa de la vista */
+            display: flex; /* Utiliza flexbox para centrar el contenido */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+        }
+
+        /* Main content styling */
+        .main-content {
+            display: flex; /* Utiliza flexbox para organizar el contenido */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            flex-direction: column; /* Organiza los elementos en columna */
+            padding: 40px; /* Espaciado interno del contenido principal */
+            background-color: #fff; /* Fondo blanco para el contenido principal */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más marcada */
+            max-width: 900px; /* Ancho máximo del contenedor principal */
+            margin: 80px auto; /* Margen automático para centrar el contenedor */
+        }
+
+        h1 {
+            color: #7b1fa2; /* Color del título */
+            font-size: 2.5rem; /* Tamaño más grande para el título */
+            margin-bottom: 20px; /* Espaciado inferior del título */
+        }
+
+        p {
+            font-size: 1.1rem; /* Tamaño de fuente para los párrafos */
+            line-height: 1.8; /* Mejor espaciado de líneas */
+            color: #555; /* Color del texto de los párrafos */
+        }
+
+        /* Image styling */
+        .profile-img {
+            width: 150px; /* Ancho de la imagen de perfil */
+            height: 150px; /* Altura de la imagen de perfil */
+            border-radius: 50%; /* Hace la imagen circular */
+            object-fit: cover; /* Asegura que la imagen mantenga proporción */
+            border: 4px solid #7b1fa2; /* Borde a juego con el diseño */
+            margin-bottom: 20px; /* Espaciado inferior de la imagen */
+            transition: transform 0.3s ease; /* Transición suave para el efecto de acercamiento */
+            cursor: pointer; /* Cambia el cursor al pasar por encima */
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1); /* Aumenta el tamaño al pasar el ratón */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Fijo a la pantalla */
+            z-index: 1000; /* Por encima de otros elementos */
+            left: 0; /* Alineación a la izquierda */
+            top: 0; /* Alineación en la parte superior */
+            width: 100%; /* Ancho completo */
+            height: 100%; /* Altura completa */
+            overflow: auto; /* Habilitar desplazamiento si es necesario */
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con opacidad */
+            justify-content: center; /* Centrado horizontalmente */
+            align-items: center; /* Centrado verticalmente */
+        }
+
+        .modal-content {
+            position: relative; /* Posicionamiento relativo para el contenido del modal */
+            margin: auto; /* Margen automático para centrar */
+            max-width: 80%; /* Ancho máximo del contenido del modal */
+            max-height: 80%; /* Altura máxima del contenido del modal */
+        }
+
+        .modal-content img {
+            width: 100%; /* Asegura que la imagen se ajuste al modal */
+            border-radius: 10px; /* Bordes redondeados para la imagen del modal */
+        }
+
+        .close {
+            position: absolute; /* Posicionamiento absoluto para la "X" de cerrar */
+            top: 10px; /* Posiciona a 10px del top */
+            right: 25px; /* Posiciona a 25px de la derecha */
+            color: #fff; /* Color del texto de la "X" */
+            font-size: 28px; /* Tamaño de fuente para la "X" */
+            font-weight: bold; /* Negrita para la "X" */
+            cursor: pointer; /* Cambia el cursor al pasar por encima */
+        }
+
+        /* Responsive for smaller screens */
+        @media screen and (max-width: 768px) {
+            .main-content {
+                padding: 20px; /* Menos padding en pantallas pequeñas */
+            }
+
+            h1 {
+                font-size: 2rem; /* Tamaño de fuente menor para el título */
+            }
+
+            p {
+                font-size: 1rem; /* Tamaño de fuente menor para los párrafos */
+            }
+
+            .profile-img {
+                width: 120px; /* Ancho menor para la imagen de perfil en pantallas pequeñas */
+                height: 120px; /* Altura menor para la imagen de perfil en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content Area -->
+    <div class="main-content" id="main-content">
+        <!-- Profile Image -->
+        <img src="chica.png" alt="Imagen de perfil" class="profile-img" id="profile-img"> <!-- Imagen de perfil -->
+
+        <h1>Sobre Mí</h1> <!-- Título principal de la sección -->
+        <p>Hola, soy Guevara Rodríguez Grecia Mabel, estudiante de séptimo semestre de la carrera de Ingeniería en Sistemas Computacionales.</p> <!-- Presentación personal -->
+        <p>Tengo 20 años y nací el 20 de julio de 2004.</p> <!-- Información personal adicional -->
+        <p>Este es mi proyecto final de la unidad, donde aplicaré todos los conocimientos adquiridos a lo largo de la unidad 3.</p> <!-- Descripción del propósito del proyecto -->
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal"> <!-- Contenedor del modal -->
+        <span class="close" id="close-modal">&times;</span> <!-- Botón de cierre -->
+        <div class="modal-content"> <!-- Contenido del modal -->
+            <img src="chica.png" alt="Imagen ampliada de perfil"> <!-- Imagen ampliada de perfil -->
+        </div>
+    </div>
+
+    <script>
+        // Obtener elementos del DOM
+        const modal = document.getElementById("myModal"); // Modal
+        const img = document.getElementById("profile-img"); // Imagen de perfil
+        const closeModal = document.getElementById("close-modal"); // Botón de cerrar modal
+
+        // Cuando el usuario hace clic en la imagen, se abre el modal
+        img.onclick = function() {
+            console.log("Imagen clickeada"); // Para depuración
+            modal.style.display = "flex"; // Muestra el modal
+        }
+
+        // Cuando el usuario hace clic en la "X", se cierra el modal
+        closeModal.onclick = function() {
+            console.log("Modal cerrado"); // Para depuración
+            modal.style.display = "none"; // Oculta el modal
+        }
+
+        // Cuando el usuario hace clic fuera del modal, se cierra
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                console.log("Clic fuera del modal"); // Para depuración
+                modal.style.display = "none"; // Oculta el modal
+            }
+        }
+
+        // Cuando el usuario presiona la tecla Escape, se cierra el modal
+        window.onkeydown = function(event) {
+            if (event.key === "Escape") {
+                console.log("Escape presionado"); // Para depuración
+                modal.style.display = "none"; // Oculta el modal
+            }
+        }
+    </script>
+</body>
+</html>

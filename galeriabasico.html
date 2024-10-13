@@ -1,0 +1,177 @@
+<!DOCTYPE html> <!-- Indica que este archivo es un documento HTML5 -->
+<html lang="es"> <!-- Especifica que el contenido está en español -->
+<head>
+    <meta charset="UTF-8"> <!-- Asegura que se puedan mostrar correctamente caracteres especiales (como tildes) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página se ajuste bien en dispositivos móviles -->
+    <title>Galería - Actividades de Nivel Básico</title> <!-- Título que aparecerá en la pestaña del navegador -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif; /* Define que el texto usará la fuente Arial */
+            margin: 0; /* Elimina el espacio alrededor de la página */
+            padding: 0; /* Elimina el espacio dentro de la página */
+            background-color: #f9f9f9; /* Establece un color de fondo suave */
+            color: #333; /* Establece el color del texto a un gris oscuro */
+        }
+
+        /* Estilo para el contenido principal */
+        .main-content {
+            margin-top: 80px; /* Añade espacio encima del contenido principal */
+            padding: 20px; /* Añade espacio interno al contenido principal */
+            min-height: 80vh; /* Asegura que el contenido principal tenga al menos el 80% de la altura de la ventana */
+            background-color: white; /* Establece el fondo del contenido principal a blanco */
+            border-radius: 8px; /* Redondea las esquinas del contenido principal */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Añade una sombra suave alrededor del contenido principal */
+        }
+
+        h1 {
+            color: #7b1fa2; /* Establece el color del título a un tono morado */
+            text-align: center; /* Centra el título en la página */
+        }
+
+        /* Estilo para la galería de imágenes */
+        .gallery {
+            display: grid; /* Usa un diseño de cuadrícula para colocar las imágenes */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Crea un grid responsivo con columnas de al menos 200px */
+            gap: 15px; /* Añade espacio entre las imágenes */
+            padding: 20px; /* Añade espacio interior alrededor de la galería */
+        }
+
+        .gallery-item {
+            text-align: center; /* Centra el texto debajo de cada imagen */
+            cursor: pointer; /* Cambia el cursor a una mano al pasar el ratón sobre la imagen */
+        }
+
+        .gallery img {
+            width: 100%; /* Hace que la imagen ocupe el 100% del espacio disponible */
+            border-radius: 8px; /* Redondea las esquinas de las imágenes */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Añade una sombra suave a las imágenes */
+            transition: transform 0.3s; /* Define una transición suave para efectos de transformación */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen al pasar el ratón sobre ella */
+        }
+
+        .gallery h2 {
+            font-size: 1.1rem; /* Establece un tamaño de fuente un poco más grande para los títulos de las imágenes */
+            margin: 10px 0 0 0; /* Añade espacio encima del título de la imagen */
+        }
+
+        /* Estilos para el modal (ventana emergente) */
+        .modal {
+            display: none; /* Mantiene el modal oculto por defecto */
+            position: fixed; /* Hace que el modal esté fijo en la pantalla */
+            z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
+            left: 0; /* Alinea el modal a la izquierda */
+            top: 0; /* Alinea el modal en la parte superior */
+            width: 100%; /* Hace que el modal ocupe todo el ancho de la pantalla */
+            height: 100%; /* Hace que el modal ocupe toda la altura de la pantalla */
+            background-color: rgba(0, 0, 0, 0.8); /* Establece un fondo oscuro semi-transparente */
+            justify-content: center; /* Centra el contenido del modal horizontalmente */
+            align-items: center; /* Centra el contenido del modal verticalmente */
+        }
+
+        .modal-content {
+            position: relative; /* Posiciona el contenido del modal de manera relativa */
+            max-width: 95%; /* Establece un ancho máximo del contenido del modal */
+            max-height: 95%; /* Establece una altura máxima del contenido del modal */
+        }
+
+        .modal-content iframe {
+            width: 100%; /* Hace que el iframe ocupe el 100% del ancho del modal */
+            height: 90vh; /* Establece la altura del iframe para que ocupe el 90% de la altura de la ventana */
+            border: none; /* Elimina el borde del iframe */
+            border-radius: 8px; /* Redondea las esquinas del iframe */
+            min-width: 600px; /* Establece un ancho mínimo para el iframe */
+            min-height: 400px; /* Establece una altura mínima para el iframe */
+        }
+
+        .close {
+            position: absolute; /* Posiciona el botón de cierre de manera absoluta */
+            top: 10px; /* Lo coloca a 10px de la parte superior */
+            right: 20px; /* Lo coloca a 20px de la derecha */
+            font-size: 24px; /* Establece un tamaño de fuente grande para el botón de cierre */
+            color: white; /* Cambia el color del texto a blanco */
+            cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón de cierre */
+        }
+    </style>
+</head>
+<body>
+    <!-- Área de contenido principal -->
+    <div class="main-content" id="main-content"> <!-- Contenedor para el contenido principal -->
+        <h1>Actividades de Nivel Básico</h1> <!-- Título de la galería -->
+        <div class="gallery"> <!-- Contenedor para la galería de imágenes -->
+            <div class="gallery-item" onclick="openModal('ActividadesP/Actividad1Mensaje.html')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="mensaje.png" alt="Actividad 1"> <!-- Imagen de la actividad 1 -->
+                <h2>Actividad 1: Mensaje</h2> <!-- Título de la actividad 1 -->
+            </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-2/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="colores.png" alt="Actividad 2"> <!-- Imagen de la actividad 2 -->
+                <h2>Actividad 2: Cambio de colores</h2> <!-- Título de la actividad 2 -->
+            </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-3/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="formulario.png" alt="Actividad 3"> <!-- Imagen de la actividad 3 -->
+                <h2>Actividad 3: Validación de formulario</h2> <!-- Título de la actividad 3 -->
+            </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-4-SUMA/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="suma.png" alt="Actividad 4"> <!-- Imagen de la actividad 4 -->
+                <h2>Actividad 4: Suma</h2> <!-- Título de la actividad 4 -->
+            </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-5-CONTADOR-/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="contador.png" alt="Actividad 5"> <!-- Imagen de la actividad 5 -->
+                <h2>Actividad 5: Contador</h2> <!-- Título de la actividad 5 -->
+            </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-6-CAMBIO-DE-IMAGEN-/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="cambiarimagen.png" alt="Actividad 6"> <!-- Imagen de la actividad 6 -->
+                <h2>Actividad 6: Cambiar imagen</h2> <!-- Título de la actividad 6 -->
+            </div>
+            <div class="gallery-item" onclick="openModal('https://l21660180.github.io/ACTIVIDAD-7-TEMPORIZADOR/')"> <!-- Elemento de la galería que abre un modal -->
+                <img src="temporizador.png" alt="Actividad 7"> <!-- Imagen de la actividad 7 -->
+                <h2>Actividad 7: Temporizador</h2> <!-- Título de la actividad 7 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal"> <!-- Contenedor del modal -->
+        <span class="close" onclick="closeModal()">&times;</span> <!-- Botón para cerrar el modal -->
+        <div class="modal-content"> <!-- Contenedor del contenido del modal -->
+            <iframe id="modal-iframe" src="" alt="Contenido del Modal"></iframe> <!-- iframe para mostrar contenido dentro del modal -->
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir el modal
+        function openModal(contentSrc) {
+            const modal = document.getElementById("myModal"); // Obtiene el modal por su ID
+            const modalIframe = document.getElementById("modal-iframe"); // Obtiene el iframe dentro del modal
+            modalIframe.src = contentSrc; // Establece la fuente del iframe en el modal
+            modal.style.display = "flex"; // Muestra el modal
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            const modal = document.getElementById("myModal"); // Obtiene el modal por su ID
+            const modalIframe = document.getElementById("modal-iframe"); // Obtiene el iframe dentro del modal
+            modalIframe.src = ""; // Limpia la fuente del iframe al cerrar
+            modal.style.display = "none"; // Oculta el modal
+        }
+
+        // Cierra el modal si se presiona la tecla Escape
+        window.onkeydown = function(event) {
+            if (event.key === "Escape") { // Verifica si la tecla presionada es "Escape"
+                closeModal(); // Cierra el modal
+            }
+        }
+
+        // Cierra el modal si se hace clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal"); // Obtiene el modal por su ID
+            if (event.target === modal) { // Verifica si el clic fue en el área del modal
+                closeModal(); // Cierra el modal
+            }
+        }
+    </script>
+</body>
+</html>
